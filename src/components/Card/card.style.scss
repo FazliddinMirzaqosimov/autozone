@@ -1,0 +1,94 @@
+.card {
+  border: 2px solid #efefef;
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+
+  &__img {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    height: 300px;
+    img {
+      height: 100%;
+      width: 100%;
+      transition: 500ms;
+      object-fit: contain;
+      scale: 1.05;
+      &:hover {
+        scale: 1;
+      }
+    }
+    i {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      font-size: 20px;
+      color: #ffcf55;
+      border: 1px solid;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.286);
+    }
+  }
+  &__def {
+    padding: 7%;
+
+    &__title {
+      margin: 10px 0;
+    }
+    &__title:hover {
+      color: #359740;
+    }
+    &__rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      p {
+        margin: 0 0 0 10px;
+        color: #70737c;
+      }
+    }
+    &__sale {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__sale > i {
+      padding: 15px;
+      font-size: 20px;
+      color: #359740;
+      border-radius: 10px;
+    }
+    &__sale > i.fa-check {
+      color: white;
+      background-color: #359740;
+    }
+  }
+
+  .img-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    .circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border-top: 5px dotted #359740;
+      border-bottom: 5px dotted #359740;
+      animation: circle 2s;
+      animation-iteration-count: infinite;
+    }
+    &.active {
+      display: flex;
+    }
+  }
+}

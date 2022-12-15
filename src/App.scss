@@ -1,0 +1,64 @@
+* {
+  color: inherit;
+  font-family: "Lexend";
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: calc(100vh - 80px);
+  display: flex;
+
+  flex-direction: column;
+  &__pages {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+body {
+  background: #f6f7f6;
+  padding: 80px 0 0;
+}
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 100;
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-top: 5px dotted #359740;
+    border-bottom: 5px dotted #359740;
+    animation: circle 2s;
+    animation-iteration-count: infinite;
+  }
+  &.active {
+    display: flex;
+  }
+}
+
+@keyframes circle {
+  from {
+    rotate: 0;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+::selection {
+  background: rgba(43, 177, 90, 0.8);
+  color: white;
+}

@@ -1,0 +1,28 @@
+.searchbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  input {
+    width: 70%;
+  }
+  select {
+    width: 30%;
+  }
+  input,
+  select {
+    padding: 10px 20px;
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid #efefef;
+  }
+}
+
+@media (max-width: 600px) {
+  .searchbar {
+    flex-wrap: wrap;
+    input,
+    select {
+      width: 100%;
+    }
+  }
+}

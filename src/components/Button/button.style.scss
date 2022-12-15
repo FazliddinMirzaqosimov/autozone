@@ -1,0 +1,11 @@
+.main-button {
+  border: none;
+  transition: 100ms;
+  padding: 11px 33px;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 8px;
+  &:hover {
+    scale: 1.1;
+  }
+}

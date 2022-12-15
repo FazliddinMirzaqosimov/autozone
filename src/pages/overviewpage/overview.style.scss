@@ -1,0 +1,11 @@
+.overview {
+  margin: 40px 0;
+  .categories {
+    margin: 30px 0 20px;
+  }
+  &__categoryTitle {
+    color: #70737c;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
