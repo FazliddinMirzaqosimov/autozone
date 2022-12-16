@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import Title from "../Title/Title";
 import "./showcase.style.scss";
 
 function Showcase() {
