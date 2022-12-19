@@ -3,8 +3,7 @@ import "./categories.style.scss";
 
 function Categories({ sortOption, setSortOption }) {
   const handleClick = (e) => {
-    if (e.target.textContent.length > 15) return;
-
+    if (e.target.textContent.length > 20) return;
     const category =
       e.target.textContent.trim() === "ALL"
         ? ""

@@ -11,6 +11,7 @@ import fetchProducts from "./redux/products/Product.action";
 
 function App() {
   const store = useSelector((store) => store.product);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

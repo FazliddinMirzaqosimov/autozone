@@ -9,6 +9,7 @@ const initialState = {
   likedProducts: JSON.parse(localStorage.getItem("like")) || [],
   cartProducts: JSON.parse(localStorage.getItem("cart")) || [],
   lastProduct: {},
+  isDark: true,
 };
 
 function userReducer(state = initialState, action) {
