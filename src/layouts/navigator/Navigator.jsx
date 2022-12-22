@@ -31,7 +31,7 @@ function Navigator({ setIsDark, isDark }) {
             ALL PRODUCTS
           </NavLink>
           <NavLink to="/about" className="link">
-            ABOUT SEEDRA
+            ABOUT
           </NavLink>
           <p className="link" onClick={changeMode}>
             Night/Light
@@ -82,7 +82,7 @@ function Navigator({ setIsDark, isDark }) {
             ALL PRODUCTS
           </NavLink>
           <NavLink to="/about" className="link">
-            ABOUT SEEDRA
+            ABOUT
           </NavLink>
           <p className="link" onClick={changeMode}>
             Night/Light

@@ -12,7 +12,10 @@ import ThemeContext from "./themeContext";
 
 function App() {
   const store = useSelector((store) => store.product);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(
+    window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 
   const dispatch = useDispatch();
 
