@@ -1,6 +1,6 @@
 footer {
   margin-top: auto;
-  background-color: white;
+  background-color: var(--primary-background-color);
   .top {
     font-size: 14px;
     display: flex;
@@ -17,11 +17,11 @@ footer {
       height: 40px;
     }
     .link {
-      color: #70737c;
+      color: var(--grey-font-color);
     }
     .link.active,
     :hover {
-      color: black;
+      color: var(--grey-font-color-hover);
     }
   }
   .bottom {

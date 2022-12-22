@@ -8,9 +8,11 @@ import HomePage from "./pages/homepage/HomePage";
 import OverViewPage from "./pages/overviewpage/OverViewPage";
 import ProductPage from "./pages/productpage/ProductPage";
 import fetchProducts from "./redux/products/Product.action";
+import ThemeContext from "./themeContext";
 
 function App() {
   const store = useSelector((store) => store.product);
+  const [isDark, setIsDark] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -18,25 +20,32 @@ function App() {
     store.products[0] || dispatch(fetchProducts());
   }, []);
 
+  useEffect(() => {
+    console.log(isDark);
+    document.documentElement.className = isDark ? "dark" : "";
+  }, [isDark]);
+
   return (
-    <div className="App">
-      <div className={"loading " + (store.isLoading ? "active" : "")}>
-        <div className="circle"></div>
-        <img src="./assets/logos/Frame.png" alt="" className="logo" />
+    <ThemeContext.Provider value={isDark}>
+      <div className="App">
+        <div className={"loading " + (store.isLoading ? "active" : "")}>
+          <div className="circle"></div>
+          <img src="./assets/logos/Frame.png" alt="" className="logo" />
+        </div>
+        <Navigator isDark={isDark} setIsDark={setIsDark} />
+        <div className="App__pages">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/overview"
+              element={<OverViewPage isLoading={store.isLoading} />}
+            />
+            <Route path="product/:id" element={<ProductPage />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Navigator />
-      <div className="App__pages">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/overview"
-            element={<OverViewPage isLoading={store.isLoading} />}
-          />
-          <Route path="product/:id" element={<ProductPage />} />
-        </Routes>
-      </div>
-      <Footer />
-    </div>
+    </ThemeContext.Provider>
   );
 }
 

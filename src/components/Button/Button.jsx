@@ -6,7 +6,7 @@ function Button({ children, main }) {
     <button
       className="main-button"
       style={{
-        backgroundColor: main ? "#359740" : "#FFFFFF",
+        backgroundColor: main ? "#359740" : "#35974000",
         color: main ? "#FFFFFF" : "#359740",
       }}
     >

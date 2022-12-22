@@ -1,7 +1,7 @@
 .card {
-  border: 2px solid #efefef;
+  border: 2px solid var(--border-color);
   border-radius: 15px;
-  background-color: white;
+  background-color: var(--primary-background-color);
   overflow: hidden;
 
   &__img {
@@ -9,7 +9,7 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: var(--primary-background-color);
     height: 300px;
     padding: 5%;
     img {

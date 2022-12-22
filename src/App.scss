@@ -7,6 +7,27 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-font-color: #1f2533;
+  --green-color: #359740;
+  --body-background-color: #f6f7f6;
+  --grey-font-color: #70737c;
+  --grey-font-color-hover: #000000;
+  --primary-background-color: #ffffff;
+  --border-color: #efefef;
+  --showcase-background: #eaf1eb;
+}
+
+:root.dark {
+  --primary-font-color: #eeeeee;
+  --body-background-color: #373737;
+  --grey-font-color: #c8bcbc;
+  --grey-font-color-hover: #ffffff;
+  --primary-background-color: #000000;
+  --border-color: #484848;
+  --showcase-background: #181818;
+}
+
 .App {
   min-height: calc(100vh - 80px);
   display: flex;
@@ -19,8 +40,9 @@
   }
 }
 body {
-  background: #f6f7f6;
+  background: var(--body-background-color);
   padding: 80px 0 0;
+  color: var(--primary-font-color);
 }
 .loading {
   position: fixed;
@@ -28,7 +50,7 @@ body {
   left: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--body-background-color);
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -40,8 +62,8 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border-top: 5px dotted #359740;
-    border-bottom: 5px dotted #359740;
+    border-top: 5px dotted var(--green-color);
+    border-bottom: 5px dotted var(--green-color);
     animation: circle 2s;
     animation-iteration-count: infinite;
   }

@@ -1,6 +1,6 @@
 nav {
   box-shadow: 0 4px 10px rgba(207, 207, 207, 0.25);
-  background-color: white;
+  background-color: var(--primary-background-color);
   position: fixed;
   z-index: 99;
   top: 0;
@@ -21,13 +21,14 @@ nav {
     width: 100px;
   }
   .link {
-    color: #70737c;
-    font-size: 14px;
+    color: var(--grey-font-color);
+    font-size: 1.5rem;
     position: relative;
+    cursor: pointer;
     transition: 100ms;
     &.active,
     &:hover {
-      color: black;
+      color: var(--grey-font-color-hover);
     }
   }
   .icons {
@@ -47,12 +48,13 @@ nav {
   }
   form {
     display: flex;
-    border: 1px solid #efefef;
+    border: 1px solid var(--border-color);
     border-radius: 70px;
     overflow: hidden;
     input {
       outline: none;
       border: none;
+      background-color: transparent;
       padding: 10px;
     }
   }
@@ -74,7 +76,7 @@ nav {
     flex-direction: column;
     position: fixed;
     top: 80px;
-    background-color: white;
+    background-color: var(--primary-background-color);
     height: calc(100vh - 80px);
     padding: 10px;
     transition: 300ms;

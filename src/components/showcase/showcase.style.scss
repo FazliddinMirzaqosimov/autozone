@@ -2,7 +2,7 @@
   display: flex;
   padding: 50px 5%;
   margin: 32px 0 16px;
-  background-color: #eaf1eb;
+  background-color: var(--showcase-background);
   border-radius: 24px;
   align-items: center;
   gap: 30px;
@@ -19,7 +19,6 @@
     h1 {
       font-size: 48px;
       font-weight: 600;
-      color: #1f2533;
     }
     &__buttons {
       display: flex;
@@ -39,12 +38,6 @@
       font-weight: 600;
     }
   }
-}
-.minishowcase {
-  text-align: center;
-  padding: 50px 5%;
-  background-color: #ffe62e17;
-  border-radius: 24px;
 }
 
 @media (max-width: 1000px) {
