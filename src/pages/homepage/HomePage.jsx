@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import ShowcaseProducts from "../../components/showcase-products/ShowcaseProducts";
 import Showcase from "../../components/showcase/Showcase";
 
