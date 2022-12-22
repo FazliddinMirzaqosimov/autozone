@@ -16,6 +16,10 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
+    & > p {
+      font-size: 15px;
+      max-width: 600px;
+    }
     h1 {
       font-size: 48px;
       font-weight: 600;
