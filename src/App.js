@@ -32,7 +32,7 @@ function App() {
       <div className="App">
         <div className={"loading " + (store.isLoading ? "active" : "")}>
           <div className="circle"></div>
-          <img src="./assets/logos/Frame.png" alt="" className="logo" />
+          <img src="./assets/logos/logop.png" alt="" className="logo" />
         </div>
         <Navigator isDark={isDark} setIsDark={setIsDark} />
         <div className="App__pages">

@@ -60,13 +60,19 @@ body {
   display: none;
   z-index: 100;
   .circle {
-    width: 100px;
-    height: 100px;
+    position: fixed;
+    // width: 100px;
+    // height: 100px;
+    padding: 100px;
     border-radius: 50%;
     border-top: 5px dotted var(--red-color);
-    border-bottom: 5px dotted var(--red-color);
+    border-left: 5px dotted var(--red-color);
     animation: circle 2s;
     animation-iteration-count: infinite;
+  }
+  img {
+    width: 150px;
+    filter: drop-shadow(0 0 4px);
   }
   &.active {
     display: flex;
