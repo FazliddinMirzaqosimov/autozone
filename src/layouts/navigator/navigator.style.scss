@@ -17,8 +17,33 @@ nav {
     justify-content: space-between;
     gap: 10px;
   }
+  .right-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+  }
+  .icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    a,
+    label {
+      font-size: 20px;
+      color: var(--grey-font-color);
+
+      &:hover {
+        color: white;
+      }
+    }
+    .menu__btn {
+      display: none;
+    }
+  }
   img {
-    width: 100px;
+    width: 200px;
+    // filter: drop-shadow(0 0 1px);
+    // background-color: white;
   }
   .link {
     color: var(--grey-font-color);
@@ -29,14 +54,6 @@ nav {
     &.active,
     &:hover {
       color: var(--grey-font-color-hover);
-    }
-  }
-  .icons {
-    display: flex;
-    gap: 10px;
-    .fa-brands {
-      font-size: 20px;
-      color: #70737c;
     }
   }
   button {
@@ -56,17 +73,6 @@ nav {
       border: none;
       background-color: transparent;
       padding: 10px;
-    }
-  }
-  .specials {
-    display: flex;
-    gap: 15px;
-    button {
-      padding: 0;
-      color: #359740;
-    }
-    button.menu__btn {
-      display: none;
     }
   }
   .menu {
@@ -99,10 +105,17 @@ a {
       button.menu__btn {
         display: block;
       }
-      form,
-      .icons,
+      .icons a {
+        display: none;
+      }
+      .icons a:nth-child(3) {
+        display: block;
+      }
       .link {
         display: none;
+      }
+      .right-links {
+        width: auto;
       }
     }
     .menu.active {

@@ -41,16 +41,12 @@
       margin: 10px 0;
     }
     &__title:hover {
-      color: #359740;
+      color: var(--red-color);
     }
     &__rating {
       display: flex;
       align-items: center;
       gap: 3px;
-      p {
-        margin: 0 0 0 10px;
-        color: #70737c;
-      }
     }
     &__sale {
       display: flex;
@@ -59,13 +55,9 @@
     }
     &__sale > i {
       padding: 15px;
-      font-size: 20px;
-      color: #359740;
+      font-size: 29px;
+      color: var(--red-color);
       border-radius: 10px;
-    }
-    &__sale > i.fa-check {
-      color: white;
-      background-color: #359740;
     }
   }
 
@@ -83,8 +75,8 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      border-top: 5px dotted #359740;
-      border-bottom: 5px dotted #359740;
+      border-top: 5px dotted var(--red-color);
+      border-bottom: 5px dotted var(--red-color);
       animation: circle 2s;
       animation-iteration-count: infinite;
     }

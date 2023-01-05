@@ -6,8 +6,8 @@ function Button({ children, main }) {
     <button
       className="main-button"
       style={{
-        backgroundColor: main ? "#359740" : "#35974000",
-        color: main ? "#FFFFFF" : "#359740",
+        backgroundColor: main ? "var(--red-color)" : "#35974000",
+        color: main ? "#FFFFFF" : "var(--red-color)",
       }}
     >
       {children}

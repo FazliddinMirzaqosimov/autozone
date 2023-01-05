@@ -24,7 +24,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(isDark);
     document.documentElement.className = isDark ? "dark" : "";
   }, [isDark]);
 
@@ -46,7 +45,7 @@ function App() {
             <Route path="product/:id" element={<ProductPage />} />
           </Routes>
         </div>
-        <Footer />
+        <Footer isDark={isDark} />
       </div>
     </ThemeContext.Provider>
   );

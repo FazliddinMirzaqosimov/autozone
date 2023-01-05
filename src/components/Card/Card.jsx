@@ -32,22 +32,10 @@ function Card({ image, rating, price, title, length, id }) {
             setActive("");
           }}
         />
-        {myProducts.likedProducts.includes(id) ? (
-          <i
-            className="fa-solid fa-heart"
-            onClick={() => dispatch(removeToLikes(id))}
-          ></i>
-        ) : (
-          <i
-            className="fa-regular fa-heart"
-            onClick={() => dispatch(addToLikes(id))}
-          ></i>
-        )}
       </div>
       <div className="card__def">
         <div className="card__def__rating">
           <Rate rate={rating.rate} />
-          <p>({rating.count})</p>
         </div>
         <Title size={16}>
           <Link className="card__def__title" to={`/product/${id}`}>
@@ -56,16 +44,15 @@ function Card({ image, rating, price, title, length, id }) {
         </Title>
         <div className="card__def__sale">
           <Title size={28}>${price}</Title>
-          {myProducts.cartProducts.includes(id) ? (
+          {myProducts.likedProducts.includes(id) ? (
             <i
-              className="fa-solid fa-check"
-              onClick={() => dispatch(removeToCarts(id))}
+              className="fa-solid fa-heart"
+              onClick={() => dispatch(removeToLikes(id))}
             ></i>
           ) : (
             <i
-              className="fa-solid fa-cart-shopping"
-              data-id={id}
-              onClick={() => dispatch(addToCarts(id))}
+              className="fa-regular fa-heart"
+              onClick={() => dispatch(addToLikes(id))}
             ></i>
           )}
         </div>

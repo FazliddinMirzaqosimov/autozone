@@ -10,7 +10,7 @@
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 40px;
-    background-color: #359740;
+    background-color: var(--red-color);
   }
   .card {
     cursor: default;

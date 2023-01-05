@@ -10,10 +10,13 @@ footer {
     padding: 40px 0;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #359740;
+    border-bottom: 1px solid var(--red-color);
+    img {
+      width: 200px;
+    }
     .stick {
       width: 0.5px;
-      background-color: #4fa083;
+      background-color: var(--red-color);
       height: 40px;
     }
     .link {
@@ -42,11 +45,20 @@ footer {
   .icons {
     display: flex;
     gap: 30px;
-    color: #359740;
+    color: var(--red-color);
     font-size: 25px;
   }
 }
 
+@media (max-width: 730px) {
+  footer {
+    .top {
+      .stick {
+        display: none;
+      }
+    }
+  }
+}
 @media (max-width: 1050px) {
   footer {
     .top {

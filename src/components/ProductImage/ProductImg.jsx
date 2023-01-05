@@ -44,7 +44,7 @@ function ProductImg({ product }) {
                     onClick={() => dispatch(addToLikes(product.id))}
                   ></i>
                 )}
-                {myProducts.cartProducts.includes(product.id) ? (
+                {/* {myProducts.cartProducts.includes(product.id) ? (
                   <i
                     className="fa-solid fa-check"
                     onClick={() => dispatch(removeToCarts(product.id))}
@@ -56,7 +56,7 @@ function ProductImg({ product }) {
                   >
                     Add to cart
                   </p>
-                )}
+                )} */}
               </div>
             </div>
           </div>
