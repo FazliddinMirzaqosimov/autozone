@@ -72,7 +72,7 @@ body {
   }
   img {
     width: 150px;
-    filter: drop-shadow(0 0 4px);
+    filter: drop-shadow(3px 3px 1px rgb(166, 41, 41));
   }
   &.active {
     display: flex;

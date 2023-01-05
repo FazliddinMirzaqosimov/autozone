@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
-import LoginPopup from "../../components/Login/LoginPopup";
+// import LoginPopup from "../../components/Login/LoginPopup";
 import "./navigator.style.scss";
 
 function Navigator({ setIsDark, isDark }) {
   const [active, setActive] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+  // const [isLogin, setIsLogin] = useState(false);
 
   const changeMode = () => {
     setIsDark(!isDark);
@@ -22,7 +22,7 @@ function Navigator({ setIsDark, isDark }) {
   });
   return (
     <>
-      <LoginPopup isActive={isLogin} setIsActive={setIsLogin} />
+      {/* <LoginPopup isActive={isLogin} setIsActive={setIsLogin} /> */}
       <nav>
         <div className="navbar">
           <NavLink to="/">

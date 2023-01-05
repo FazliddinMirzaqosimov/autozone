@@ -5,6 +5,7 @@ import "./App.scss";
 import Footer from "./layouts/footer/Footer";
 import Navigator from "./layouts/navigator/Navigator";
 import HomePage from "./pages/homepage/HomePage";
+import LoginPage from "./pages/loginpage/LoginPage";
 import OverViewPage from "./pages/overviewpage/OverViewPage";
 import ProductPage from "./pages/productpage/ProductPage";
 import fetchProducts from "./redux/products/Product.action";
@@ -38,6 +39,7 @@ function App() {
         <div className="App__pages">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route
               path="/overview"
               element={<OverViewPage isLoading={store.isLoading} />}

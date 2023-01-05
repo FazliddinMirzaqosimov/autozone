@@ -1,30 +1,14 @@
-import {
-  ADD_TO_CART,
-  ADD_TO_LIKE,
-  REMOVE_TO_CART,
-  REMOVE_TO_LIKE,
-} from "./UserType";
+import { ADD_TO_LIKE, REMOVE_TO_LIKE, CHANGE_IS_ADMIN } from "./UserType";
 
 const initialState = {
   likedProducts: JSON.parse(localStorage.getItem("like")) || [],
-  cartProducts: JSON.parse(localStorage.getItem("cart")) || [],
   lastProduct: {},
   isDark: false,
-  loggedIn: false,
-  user: {},
+  isAdmin: Boolean(localStorage.getItem("isAdmin")),
 };
 
 function userReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_TO_CART:
-      const cartProducts = [
-        ...new Set([...state.cartProducts, action.payload]),
-      ];
-      localStorage.setItem("cart", JSON.stringify(cartProducts));
-      return {
-        ...state,
-        cartProducts,
-      };
     case ADD_TO_LIKE:
       const likedProducts = [
         ...new Set([...state.likedProducts, action.payload]),
@@ -34,14 +18,12 @@ function userReducer(state = initialState, action) {
         ...state,
         likedProducts,
       };
-    case REMOVE_TO_CART: {
-      const x = new Set(state.cartProducts);
-      x.delete(action.payload);
+    case CHANGE_IS_ADMIN:
       return {
         ...state,
-        cartProducts: [...x],
+        isAdmin: true,
       };
-    }
+
     case REMOVE_TO_LIKE: {
       const x = new Set(state.likedProducts);
       x.delete(action.payload);

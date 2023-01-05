@@ -3,7 +3,8 @@
   border-radius: 15px;
   background-color: var(--primary-background-color);
   overflow: hidden;
-
+  display: flex;
+  flex-direction: column;
   &__img {
     position: relative;
     overflow: hidden;
@@ -36,7 +37,7 @@
   }
   &__def {
     padding: 7%;
-
+    margin-top: auto;
     &__title {
       margin: 10px 0;
     }

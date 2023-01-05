@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import "./footer.style.scss";
 
 function Footer({ isDark }) {
-  console.log(isDark);
   return (
     <footer>
       <div className="top">
