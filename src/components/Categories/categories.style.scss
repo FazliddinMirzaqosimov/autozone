@@ -1,31 +1,18 @@
 .product-categories {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
   text-transform: uppercase;
-  overflow-x: scroll;
-  padding: 0 20px 20px;
-  &::-webkit-scrollbar {
-    height: 10px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 40px;
-    background-color: var(--red-color);
-  }
-  .card {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  select {
     cursor: default;
-    padding: 20px;
+    padding: 10px;
     background-color: var(--primary-background-color);
-
     border: 1px solid --border-color;
     border-radius: 8px;
     font-size: 14px;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 200px;
+    width: calc(33% - 7px);
+    min-width: 100px;
   }
 }
 

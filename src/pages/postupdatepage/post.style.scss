@@ -1,0 +1,31 @@
+.post-page {
+  // color: black;
+  color: var(--primary-font-color);
+  margin: 20px auto;
+  max-width: 500px;
+  display: flex;
+  background-color: var(--primary-background-color);
+  flex-direction: column;
+  padding: 2%;
+  border-radius: 20px;
+
+  input,
+  button,
+  textarea,
+  select {
+    resize: none;
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color: var(--primary-background-color);
+  }
+  button {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    background-color: var(--red-color);
+    border: none;
+  }
+}

@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import fetchProducts from "../../redux/products/Product.action";
+import React from "react";
 import Card from "../Card/Card";
 import "./cards.style.scss";
 
-function Cards({ store ,length}) {
+function Cards({ store, length = 100 }) {
   return (
     <div className="product-cards">
       {store.map((el) => (
-        <Card {...el} length={length} key={el.id} />
+        <Card {...el} length={length} key={el._id} />
       ))}
     </div>
   );

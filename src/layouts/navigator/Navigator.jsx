@@ -22,7 +22,6 @@ function Navigator({ setIsDark, isDark }) {
   });
   return (
     <>
-      {/* <LoginPopup isActive={isLogin} setIsActive={setIsLogin} /> */}
       <nav>
         <div className="navbar">
           <NavLink to="/">
@@ -43,13 +42,16 @@ function Navigator({ setIsDark, isDark }) {
               Night/Light
             </p>
             <div className="icons">
-              <a href="#">
+              <a
+                href="https://www.instagram.com/autozone__shop/"
+                target="_blank"
+              >
                 <i className="fa-brands fa-instagram"></i>
               </a>
               <a href="#">
                 <i className="fa-brands fa-facebook"></i>
               </a>
-              <Link to="">
+              <Link to="/likes">
                 <i className="fa-regular fa-heart"></i>
               </Link>
               <button className="menu__btn" onClick={() => setActive(!active)}>
@@ -60,10 +62,8 @@ function Navigator({ setIsDark, isDark }) {
         </div>
         <div
           className={"menu " + (active ? "active" : "")}
-          onClick={(e) => {
-            return e.target.className === "search__input"
-              ? ""
-              : setActive(!active);
+          onClick={() => {
+            setActive(!active);
           }}
         >
           <NavLink to="/overview" className="link">

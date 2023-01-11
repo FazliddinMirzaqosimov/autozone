@@ -1,6 +1,6 @@
 * {
   color: inherit;
-  font-family: "Lexend";
+  font-family: "Lexend", sans-serif;
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@
 :root {
   --primary-font-color: #1f2533;
   --red-color: rgba(193, 31, 31, 0.895);
-  --body-background-color: #f6f7f6;
+  --body-background-color: #e9efe9;
   --grey-font-color: #70737c;
   --grey-font-color-hover: #000000;
   --primary-background-color: #ffffff;
@@ -37,13 +37,15 @@
   &__pages {
     max-width: 1300px;
     margin: 0 auto;
-    width: 80%;
+    width: 85%;
   }
 }
 body {
   background: var(--body-background-color);
+  opacity: 0.9;
   padding: 80px 0 0;
   color: var(--primary-font-color);
+  overflow-x: hidden;
 }
 .loading {
   position: fixed;

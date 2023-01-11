@@ -23,9 +23,13 @@ function Footer({ isDark }) {
           />
         </NavLink>
         <div className="stick"></div>
-        <NavLink to="blog" className="link">
+        <a
+          href="https://www.instagram.com/autozone__shop/"
+          target="_blank"
+          className="link"
+        >
           OUR BLOG
-        </NavLink>
+        </a>
         <div className="stick"></div>
         <a to="" className="link">
           Privacy Policy
@@ -34,7 +38,7 @@ function Footer({ isDark }) {
       </div>
       <div className="bottom">
         <div className="icons">
-          <a href="#">
+          <a href="https://www.instagram.com/autozone__shop/" target="_blank">
             <i className="fa-brands fa-instagram"></i>
           </a>
           <a href="#">

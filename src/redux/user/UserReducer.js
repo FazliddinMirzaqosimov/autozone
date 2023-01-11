@@ -18,21 +18,21 @@ function userReducer(state = initialState, action) {
         ...state,
         likedProducts,
       };
-    case CHANGE_IS_ADMIN:
-      return {
-        ...state,
-        isAdmin: true,
-      };
-
     case REMOVE_TO_LIKE: {
       const x = new Set(state.likedProducts);
       x.delete(action.payload);
+      localStorage.setItem("like", JSON.stringify([...x]));
 
       return {
         ...state,
         likedProducts: [...x],
       };
     }
+    case CHANGE_IS_ADMIN:
+      return {
+        ...state,
+        isAdmin: true,
+      };
     case "CHANGE_LAST_PRODUCT":
       return {
         ...state,

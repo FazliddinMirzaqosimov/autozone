@@ -5,6 +5,27 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  .change-product {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    p,
+    a {
+      font-size: 20px;
+      background-color: lightcoral;
+
+      padding: 5px;
+    }
+  }
   &__img {
     position: relative;
     overflow: hidden;
@@ -13,6 +34,7 @@
     background-color: var(--primary-background-color);
     height: 300px;
     padding: 5%;
+
     img {
       height: 100%;
       width: 100%;
@@ -81,8 +103,8 @@
       animation: circle 2s;
       animation-iteration-count: infinite;
     }
-    &.active {
-      display: flex;
-    }
+  }
+  &__img.active .img-loading {
+    display: flex;
   }
 }

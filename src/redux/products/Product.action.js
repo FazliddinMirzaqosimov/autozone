@@ -1,4 +1,5 @@
 import axios from "axios";
+import { apiUrl } from "../../global";
 import {
   FETCH_PRODUCT_FAIL,
   FETCH_PRODUCT_SUCCES,
@@ -27,9 +28,9 @@ function fetchProducts() {
   return (dispatch) => {
     dispatch(fetchProductRequest());
     axios
-      .get("https://fakestoreapi.com/products")
+      .get(apiUrl + "/api/v1/products")
       .then((response) => {
-        dispatch(fetchProductSucces(response.data));
+        dispatch(fetchProductSucces(response.data.data.products));
       })
       .catch((error) => {
         dispatch(fetchProductFail(error.message));

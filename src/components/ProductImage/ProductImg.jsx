@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCarts,
-  addToLikes,
-  removeToCarts,
-  removeToLikes,
-} from "../../redux/user/UserAction";
+import { addToLikes, removeToLikes } from "../../redux/user/UserAction";
+import ThemeContext from "../../themeContext";
 import "./productimage.style.scss";
 
 function ProductImg({ product }) {
   const myProducts = useSelector((state) => state.user);
+  const isDark = React.useContext(ThemeContext);
   const dispatch = useDispatch();
-
+  console.log(product.image);
   return (
     <>
       <div className="productImg">
@@ -19,12 +16,34 @@ function ProductImg({ product }) {
           Main / Category / <span>{product.category}</span>
         </p>
         <div className="productImg__main">
-          <img src={product.image} alt="" />
+          <img
+            src={product.image ? product.image : "/assets/logos/logop.png"}
+            style={{
+              filter: isDark && !product.image ? "drop-shadow(0 0 3px)" : "",
+            }}
+            alt=""
+          />
           <div className="productImg__main__def">
-            <h1>{product.title}</h1>
+            <h1>{product.name}</h1>
             <div className="productImg__main__def__category">
               <p>Aviable</p>
-              <p>{product.category.toUpperCase()}</p>
+            </div>
+            <div className="productImg__main__def__about">
+              <p style={{ display: product.category ? "flex" : "none" }}>
+                {"Category"}
+                <div className="stick"></div>
+                {product.category}
+              </p>
+              <p style={{ display: product.car ? "flex" : "none" }}>
+                {"Car"}
+                <div className="stick"></div>
+                {product.car}
+              </p>
+              <p style={{ display: product.country ? "flex" : "none" }}>
+                {"Country"}
+                <div className="stick"></div>
+                {product.country}
+              </p>
             </div>
             <p>{product.description}</p>
             <div className="productImg__main__def__sale">
@@ -33,30 +52,17 @@ function ProductImg({ product }) {
                 <h2>${product.price}</h2>
               </div>
               <div>
-                {myProducts.likedProducts.includes(product.id) ? (
+                {myProducts.likedProducts.includes(product._id) ? (
                   <i
                     className="fa-solid fa-heart"
-                    onClick={() => dispatch(removeToLikes(product.id))}
+                    onClick={() => dispatch(removeToLikes(product._id))}
                   ></i>
                 ) : (
                   <i
                     className="fa-regular fa-heart"
-                    onClick={() => dispatch(addToLikes(product.id))}
+                    onClick={() => dispatch(addToLikes(product._id))}
                   ></i>
                 )}
-                {/* {myProducts.cartProducts.includes(product.id) ? (
-                  <i
-                    className="fa-solid fa-check"
-                    onClick={() => dispatch(removeToCarts(product.id))}
-                  ></i>
-                ) : (
-                  <p
-                    data-id={product.id}
-                    onClick={() => dispatch(addToCarts(product.id))}
-                  >
-                    Add to cart
-                  </p>
-                )} */}
               </div>
             </div>
           </div>

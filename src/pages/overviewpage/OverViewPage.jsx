@@ -11,14 +11,22 @@ function OverViewPage({ isLoading }) {
   const [sortOption, setSortOption] = useState({
     title: "",
     option: "expensive",
-    category: "",
+    categories: {},
   });
-
+  console.log(store);
   const sortedProducts = store
     .filter((el) => {
       return (
-        el.title.toLowerCase().includes(sortOption.title.toLowerCase()) &&
-        (sortOption.category ? el.category === sortOption.category : true)
+        el.name.toLowerCase().includes(sortOption.title.toLowerCase()) &&
+        (sortOption.categories.car
+          ? el.car === sortOption.categories.car
+          : true) &&
+        (sortOption.categories.category
+          ? el.category === sortOption.categories.category
+          : true) &&
+        (sortOption.categories.country
+          ? el.country === sortOption.categories.country
+          : true)
       );
     })
     .sort((a, b) => {
@@ -32,14 +40,21 @@ function OverViewPage({ isLoading }) {
         case "cheap":
           return a.price - b.price;
 
-        case "watch":
-          return b.rating.count - a.rating.count;
+        case "newest":
+          return (
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+          );
+
+        case "oldest":
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
 
         default:
           break;
       }
     });
-
+  console.log(sortedProducts);
   return (
     <div className="overview">
       <Search sortOption={sortOption} setSortOption={setSortOption} />
@@ -47,10 +62,10 @@ function OverViewPage({ isLoading }) {
         <Categories sortOption={sortOption} setSortOption={setSortOption} />
       </div>
       <p className="overview__categoryTitle">
-        {sortOption.category.toLocaleUpperCase() || "ALL"}:{" "}
+        {/* {sortOption.category.toLocaleUpperCase() || "ALL"}:{" "} */}
         {sortedProducts.length}
       </p>
-      <Cards store={sortedProducts} length={100} />
+      <Cards store={sortedProducts} />
     </div>
   );
 }

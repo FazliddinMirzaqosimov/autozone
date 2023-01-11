@@ -1,5 +1,6 @@
 import React from "react";
 import "./rate.style.scss";
+
 function Rate({ rate }) {
   const solid = Math.floor(rate);
   const half = Math.ceil(rate - solid);

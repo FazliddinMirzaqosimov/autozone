@@ -24,7 +24,8 @@ function Search({ sortOption, setSortOption }) {
         <option value="expensive">Most expensive</option>
         <option value="cheap">Most cheapest</option>
         <option value="rate">Rating</option>
-        <option value="watch">Most watched</option>
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
       </select>
     </div>
   );
