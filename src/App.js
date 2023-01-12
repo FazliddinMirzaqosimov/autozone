@@ -39,7 +39,6 @@ function App() {
     })
       .then((res) => {
         dispatch(fetchProductSucces());
-        dispatch(fetchProducts());
         navigate("/overview");
       })
       .catch((err) => {
@@ -62,7 +61,6 @@ function App() {
       method: "PATCH",
     })
       .then(() => {
-        dispatch(fetchProducts());
         dispatch(fetchProductSucces());
         navigate("/product/" + id);
       })

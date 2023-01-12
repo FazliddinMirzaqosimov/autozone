@@ -32,7 +32,7 @@
 .App {
   min-height: calc(100vh - 80px);
   display: flex;
-
+  overflow: hidden;
   flex-direction: column;
   &__pages {
     max-width: 1300px;

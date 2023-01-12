@@ -3,17 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import Cards from "../../components/Cards/Cards";
 import Categories from "../../components/Categories/Categories";
 import Search from "../../components/Search/Search";
+import fetchProducts from "../../redux/products/Product.action";
 // import fet
 import "./overview.style.scss";
 
 function OverViewPage({ isLoading }) {
   const store = useSelector((state) => state.product.products);
+  const dispatch = useDispatch();
+
   const [sortOption, setSortOption] = useState({
     title: "",
     option: "expensive",
     categories: {},
   });
-  console.log(store);
+  useEffect(() => {
+    console.log(1);
+    dispatch(fetchProducts());
+  }, []);
+  // console.log(store);
   const sortedProducts = store
     .filter((el) => {
       return (
@@ -42,19 +49,19 @@ function OverViewPage({ isLoading }) {
 
         case "newest":
           return (
-            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           );
 
         case "oldest":
           return (
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
           );
 
         default:
           break;
       }
     });
-  console.log(sortedProducts);
+  // console.log(sortedProducts);
   return (
     <div className="overview">
       <Search sortOption={sortOption} setSortOption={setSortOption} />

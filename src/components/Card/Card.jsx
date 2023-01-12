@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../global";
 import fetchProducts from "../../redux/products/Product.action";
 import { addToLikes, removeToLikes } from "../../redux/user/UserAction";
 import ThemeContext from "../../themeContext";
@@ -8,7 +9,17 @@ import Rate from "../Rate/Rate";
 import Title from "../Title/Title";
 import "./card.style.scss";
 
-function Card({ image, rating, price, name, length, _id }) {
+function Card({
+  image,
+  rating,
+  price,
+  name,
+  length,
+  _id,
+  createdAt,
+  country,
+  category,
+}) {
   const [active, setActive] = useState("active");
   const productTitle =
     name.length < length ? name : `${name.slice(0, length)} ...`;
@@ -18,7 +29,7 @@ function Card({ image, rating, price, name, length, _id }) {
   const { isAdmin } = useSelector((state) => state.user);
 
   const deleteProduct = async (id) => {
-    return await fetch("http://localhost:3000/api/v1/products/" + id, {
+    return await fetch(apiUrl + "/api/v1/products/" + id, {
       method: "DELETE",
     });
   };
@@ -66,6 +77,9 @@ function Card({ image, rating, price, name, length, _id }) {
             {productTitle}
           </Link>
         </Title>
+        <p>{country}</p>
+        <p>{createdAt}</p>
+        <p>{category}</p>
         <div className="card__def__sale">
           <Title size={28}>{price} So'm</Title>
           {myProducts.likedProducts.includes(_id) ? (

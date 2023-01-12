@@ -24,3 +24,14 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .product-categories {
+    select {
+      width: 47%;
+    }
+    select:last-child {
+      width: 100%;
+    }
+  }
+}

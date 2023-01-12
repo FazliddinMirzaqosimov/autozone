@@ -30,9 +30,11 @@ function fetchProducts() {
     axios
       .get(apiUrl + "/api/v1/products")
       .then((response) => {
+        console.log(response);
         dispatch(fetchProductSucces(response.data.data.products));
       })
       .catch((error) => {
+        console.log(error);
         dispatch(fetchProductFail(error.message));
       });
   };
