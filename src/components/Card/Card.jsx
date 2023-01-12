@@ -33,7 +33,6 @@ function Card({
       method: "DELETE",
     });
   };
-
   return (
     <div className="card">
       {isAdmin ? (
@@ -57,7 +56,7 @@ function Card({
         </div>
         <Link to={`/product/${_id}`}>
           <img
-            src={image || "./assets/logos/logop.png"}
+            src={image || "/assets/logos/logop.png"}
             style={{
               filter: isDark && !image ? "drop-shadow(0 0 3px)" : "",
             }}
@@ -77,9 +76,9 @@ function Card({
             {productTitle}
           </Link>
         </Title>
-        <p>{country}</p>
+        <p>{JSON.parse(country).name}</p>
         <p>{createdAt}</p>
-        <p>{category}</p>
+        <p>{JSON.parse(category).name}</p>
         <div className="card__def__sale">
           <Title size={28}>{price} So'm</Title>
           {myProducts.likedProducts.includes(_id) ? (

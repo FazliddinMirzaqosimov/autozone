@@ -17,7 +17,6 @@ function OverViewPage({ isLoading }) {
     categories: {},
   });
   useEffect(() => {
-    console.log(1);
     dispatch(fetchProducts());
   }, []);
   // console.log(store);
@@ -26,20 +25,20 @@ function OverViewPage({ isLoading }) {
       return (
         el.name.toLowerCase().includes(sortOption.title.toLowerCase()) &&
         (sortOption.categories.car
-          ? el.car === sortOption.categories.car
+          ? JSON.parse(el.car)._id === sortOption.categories.car
           : true) &&
         (sortOption.categories.category
-          ? el.category === sortOption.categories.category
+          ? JSON.parse(el.category)._id === sortOption.categories.category
           : true) &&
         (sortOption.categories.country
-          ? el.country === sortOption.categories.country
+          ? JSON.parse(el.country)._id === sortOption.categories.country
           : true)
       );
     })
     .sort((a, b) => {
       switch (sortOption.option) {
         case "rate":
-          return b.rating.rate - a.rating.rate;
+          return b.rating - a.rating;
 
         case "expensive":
           return b.price - a.price;

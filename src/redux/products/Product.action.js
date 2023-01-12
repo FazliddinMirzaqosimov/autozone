@@ -4,6 +4,7 @@ import {
   FETCH_PRODUCT_FAIL,
   FETCH_PRODUCT_SUCCES,
   FETCH_PRODUCT_REQUEST,
+  FETCH_FILTER,
 } from "./Product.type";
 
 export function fetchProductRequest() {
@@ -23,6 +24,12 @@ export function fetchProductFail(error) {
     payload: error,
   };
 }
+export function fetchFiltersSucces(filters) {
+  return {
+    type: FETCH_FILTER,
+    payload: filters,
+  };
+}
 
 function fetchProducts() {
   return (dispatch) => {
@@ -30,8 +37,21 @@ function fetchProducts() {
     axios
       .get(apiUrl + "/api/v1/products")
       .then((response) => {
-        console.log(response);
         dispatch(fetchProductSucces(response.data.data.products));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(fetchProductFail(error.message));
+      });
+  };
+}
+export function fetchFilters() {
+  return (dispatch) => {
+    dispatch(fetchProductRequest());
+    axios
+      .get(`${apiUrl}/api/v1/filters`)
+      .then((response) => {
+        dispatch(fetchFiltersSucces(response.data.data.filters));
       })
       .catch((error) => {
         console.log(error);

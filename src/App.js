@@ -6,6 +6,7 @@ import "./App.scss";
 import { apiUrl } from "./global";
 import Footer from "./layouts/footer/Footer";
 import Navigator from "./layouts/navigator/Navigator";
+import AddCategory from "./pages/addfilterpage/AddFilter";
 import HomePage from "./pages/homepage/HomePage";
 import LikePage from "./pages/likepage/LikePage";
 import LoginPage from "./pages/loginpage/LoginPage";
@@ -13,6 +14,7 @@ import OverViewPage from "./pages/overviewpage/OverViewPage";
 import PostPage from "./pages/postupdatepage/PostPage";
 import ProductPage from "./pages/productpage/ProductPage";
 import fetchProducts, {
+  fetchFilters,
   fetchProductFail,
   fetchProductRequest,
   fetchProductSucces,
@@ -38,7 +40,7 @@ function App() {
       method: "POST",
     })
       .then((res) => {
-        dispatch(fetchProductSucces());
+        dispatch(fetchProductFail());
         navigate("/overview");
       })
       .catch((err) => {
@@ -61,7 +63,7 @@ function App() {
       method: "PATCH",
     })
       .then(() => {
-        dispatch(fetchProductSucces());
+        dispatch(fetchProductFail());
         navigate("/product/" + id);
       })
       .catch((err) => {
@@ -71,7 +73,8 @@ function App() {
   };
 
   useEffect(() => {
-    store.products[0] || dispatch(fetchProducts());
+    dispatch(fetchProducts());
+    dispatch(fetchFilters());
   }, []);
 
   useEffect(() => {
@@ -90,6 +93,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/add-filter/:name/" element={<AddCategory />} />
+            <Route path="/update-filter/:id/" element={<AddCategory />} />
             <Route
               path="/post"
               element={<PostPage handleSubmit={postProduct} />}

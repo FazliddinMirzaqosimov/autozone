@@ -23,13 +23,12 @@ function ProductPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(apiUrl);
     if (id === product?._id) return;
     axios.get(`${apiUrl}/api/v1/products/${id}`).then((res) => {
       dispatch(changeLastProduct(res.data.data.product));
     });
   }, [id]);
-  console.log(product);
+
   return id === product._id ? (
     <div className="product-page">
       <ProductImg product={product} />

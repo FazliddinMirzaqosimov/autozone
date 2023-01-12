@@ -17,6 +17,7 @@ const PostPage = ({ handleSubmit }) => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [errorMsg, setErrorMsg] = useState("");
+  const filters = useSelector((state) => state.product.filters);
 
   useEffect(() => {
     if (!id) return;
@@ -63,44 +64,35 @@ const PostPage = ({ handleSubmit }) => {
         />
 
         <select name="category" required value={product.category}>
-          <option value="accessuar">Aksessuari</option>
-          <option value="akkumlyator">Akkumlyator</option>
-          <option value="motor">Motor chast</option>
-          <option value="filter">Filtr</option>
-          <option value="xodovoy">Xodovoya chast</option>
-          <option value="oil">Masel</option>
-          <option value="jidkosti">Jidkosti</option>
-          <option value="autoximiya">Avtoximiya</option>
-          <option value="others">Others</option>
+          {filters.map((el) =>
+            el.filterName === "category" ? (
+              <option value={JSON.stringify(el)}>{el.name}</option>
+            ) : (
+              ""
+            )
+          )}
         </select>
 
         <select name="car" required id="" value={product.car}>
-          <option value="captiva">captiva</option>
-          <option value="damas">damas</option>
-          <option value="gentra">gentra</option>
-          <option value="malibu">malibu</option>
-          <option value="nexia">nexia</option>
-          <option value="tico">tico</option>
-          <option value="cobalt">cobalt</option>
-          <option value="epica">epica</option>
-          <option value="lacetty">lacetty</option>
-          <option value="matiz">matiz</option>
-          <option value="spark">spark</option>
-          <option value="tracker">tracker</option>
-          <option value="vaz">vaz</option>
-          <option value="all">all</option>
-          <option value="others">Others</option>
+          <option value='{"_id":"","name":"All"}'>All cars</option>
+          {filters.map((el) =>
+            el.filterName === "car" ? (
+              <option value={JSON.stringify(el)}>{el.name}</option>
+            ) : (
+              ""
+            )
+          )}
         </select>
 
         <select name="country" required id="" value={product.country}>
-          <option value="uzbekistan">Uzbekistan</option>
-          <option value="usa">USA</option>
-          <option value="russia">Russia</option>
-          <option value="korea">Korea</option>
-          <option value="turkey">Turkey</option>
-          <option value="europe">Europe</option>
-          <option value="china">China</option>
-          <option value="others">Others</option>
+          {filters.map((el) =>
+            el.filterName === "country" ? (
+              <option value={JSON.stringify(el)}>{el.name}</option>
+            ) : (
+              ""
+            )
+          )}
+          <option value="others">Other country</option>
         </select>
 
         <input

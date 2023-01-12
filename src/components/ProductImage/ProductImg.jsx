@@ -8,12 +8,22 @@ function ProductImg({ product }) {
   const myProducts = useSelector((state) => state.user);
   const isDark = React.useContext(ThemeContext);
   const dispatch = useDispatch();
-  console.log(product.image);
+  const category =
+    product.category.length > 15
+      ? JSON.parse(product.category)
+      : { name: product.category };
+  const country =
+    product.country.length > 15
+      ? JSON.parse(product.country)
+      : { name: product.country };
+  const car =
+    product.car.length > 15 ? JSON.parse(product.car) : { name: product.car };
+
   return (
     <>
       <div className="productImg">
         <p className="productImg__path">
-          Main / Category / <span>{product.category}</span>
+          Main / Category / <span>{category?.name}</span>
         </p>
         <div className="productImg__main">
           <img
@@ -29,20 +39,20 @@ function ProductImg({ product }) {
               <p>Aviable</p>
             </div>
             <div className="productImg__main__def__about">
-              <p style={{ display: product.category ? "flex" : "none" }}>
+              <p style={{ display: category ? "flex" : "none" }}>
                 {"Category"}
                 <div className="stick"></div>
-                {product.category}
+                {category.name}
               </p>
-              <p style={{ display: product.car ? "flex" : "none" }}>
+              <p style={{ display: car ? "flex" : "none" }}>
                 {"Car"}
                 <div className="stick"></div>
-                {product.car}
+                {car?.name}
               </p>
-              <p style={{ display: product.country ? "flex" : "none" }}>
+              <p style={{ display: country ? "flex" : "none" }}>
                 {"Country"}
                 <div className="stick"></div>
-                {product.country}
+                {country.name}
               </p>
             </div>
             <p>{product.description}</p>
