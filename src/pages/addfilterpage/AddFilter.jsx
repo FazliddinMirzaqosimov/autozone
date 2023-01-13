@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl } from "../../global";
+import { fetchFilters } from "../../redux/products/Product.action";
 
 function AddFilter({ page }) {
   const { id, name } = useParams();
   const [filter, setFilter] = useState({});
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     if (!id) return;
     fetch(`${apiUrl}/api/v1/filter/${id}`)
@@ -28,6 +30,7 @@ function AddFilter({ page }) {
       .then((res) => {
         e.target.reset();
         setErrorMsg("");
+        dispatch(fetchFilters());
       })
       .catch((err) => {
         setErrorMsg(err.message);
@@ -43,6 +46,7 @@ function AddFilter({ page }) {
     })
       .then((res) => {
         navigate("/overview");
+        dispatch(fetchFilters());
       })
       .catch((err) => {
         setErrorMsg(err.message);

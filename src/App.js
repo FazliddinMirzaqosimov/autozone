@@ -54,7 +54,6 @@ function App() {
     console.log(Object.fromEntries(formData.entries()));
     Object.fromEntries(formData.entries()).image.name ||
       formData.delete("image");
-    console.log(Object.fromEntries(formData.entries()));
 
     dispatch(fetchProductRequest());
     axios({
@@ -73,7 +72,6 @@ function App() {
   };
 
   useEffect(() => {
-    dispatch(fetchProducts());
     dispatch(fetchFilters());
   }, []);
 

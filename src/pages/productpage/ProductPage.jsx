@@ -5,27 +5,26 @@ import { useParams } from "react-router-dom";
 import Cards from "../../components/Cards/Cards";
 import ProductImg from "../../components/ProductImage/ProductImg";
 import { apiUrl } from "../../global";
+import getProducts from "../../hooks/getProducts";
 import { changeLastProduct } from "../../redux/user/UserAction";
 import "./productpage.style.scss";
 
 function ProductPage() {
   const { id } = useParams();
   const product = useSelector((state) => state.user.lastProduct);
-  const relatedProducts = useSelector((state) =>
-    state.product.products
-      .filter(
-        (pr) =>
-          (pr.category === product?.category || pr.car === product.car) &&
-          pr._id !== id
-      )
-      .slice(0, 3)
-  );
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (id === product?._id) return;
     axios.get(`${apiUrl}/api/v1/products/${id}`).then((res) => {
       dispatch(changeLastProduct(res.data.data.product));
+    });
+  }, [id]);
+
+  useEffect(() => {
+    getProducts({ limit: 3, filters: {} }, (data) => {
+      setRelatedProducts(data.data.products.filter((el) => el._id !== id));
     });
   }, [id]);
 

@@ -3,64 +3,37 @@ import { useDispatch, useSelector } from "react-redux";
 import Cards from "../../components/Cards/Cards";
 import Categories from "../../components/Categories/Categories";
 import Search from "../../components/Search/Search";
+import { apiUrl } from "../../global";
+import getProducts from "../../hooks/getProducts";
 import fetchProducts from "../../redux/products/Product.action";
 // import fet
 import "./overview.style.scss";
 
 function OverViewPage({ isLoading }) {
-  const store = useSelector((state) => state.product.products);
-  const dispatch = useDispatch();
-
+  const [store, setStore] = useState([]);
+  const [products, setProducts] = useState([]);
   const [sortOption, setSortOption] = useState({
-    title: "",
-    option: "expensive",
-    categories: {},
+    name: "",
+    sort: "-price",
+    filters: {},
   });
+
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
-  // console.log(store);
-  const sortedProducts = store
-    .filter((el) => {
-      return (
-        el.name.toLowerCase().includes(sortOption.title.toLowerCase()) &&
-        (sortOption.categories.car
-          ? JSON.parse(el.car)._id === sortOption.categories.car
-          : true) &&
-        (sortOption.categories.category
-          ? JSON.parse(el.category)._id === sortOption.categories.category
-          : true) &&
-        (sortOption.categories.country
-          ? JSON.parse(el.country)._id === sortOption.categories.country
-          : true)
-      );
-    })
-    .sort((a, b) => {
-      switch (sortOption.option) {
-        case "rate":
-          return b.rating - a.rating;
-
-        case "expensive":
-          return b.price - a.price;
-
-        case "cheap":
-          return a.price - b.price;
-
-        case "newest":
-          return (
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          );
-
-        case "oldest":
-          return (
-            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-          );
-
-        default:
-          break;
-      }
+    getProducts(sortOption, (data) => {
+      const products = data.data.products;
+      setStore(products);
+      setProducts(products);
     });
-  // console.log(sortedProducts);
+  }, [sortOption.sort, sortOption.filters]);
+
+  useEffect(() => {
+    const sortedProducts = store.filter((el) => {
+      return el.name.toLowerCase().includes(sortOption.name.toLowerCase());
+    });
+
+    setProducts(sortedProducts);
+  }, [sortOption.name]);
+  console.log(products);
   return (
     <div className="overview">
       <Search sortOption={sortOption} setSortOption={setSortOption} />
@@ -69,9 +42,9 @@ function OverViewPage({ isLoading }) {
       </div>
       <p className="overview__categoryTitle">
         {/* {sortOption.category.toLocaleUpperCase() || "ALL"}:{" "} */}
-        {sortedProducts.length}
+        {products.length}
       </p>
-      <Cards store={sortedProducts} />
+      <Cards store={products} />
     </div>
   );
 }

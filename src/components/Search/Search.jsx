@@ -16,16 +16,16 @@ function Search({ sortOption, setSortOption }) {
     <div className="searchbar">
       <input
         type="text"
-        name="title"
+        name="name"
         onChange={handleChange}
         placeholder="Search..."
       />
-      <select name="option" onChange={handleChange}>
-        <option value="expensive">Most expensive</option>
-        <option value="cheap">Most cheapest</option>
-        <option value="rate">Rating</option>
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
+      <select name="sort" onChange={handleChange}>
+        <option value="-price">Most expensive</option>
+        <option value="price">Most cheapest</option>
+        <option value="-rating">Rating</option>
+        <option value="-createdAt">Newest</option>
+        <option value="createdAt">Oldest</option>
       </select>
     </div>
   );

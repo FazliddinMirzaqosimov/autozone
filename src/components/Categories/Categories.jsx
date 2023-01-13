@@ -8,7 +8,7 @@ function Categories({ sortOption, setSortOption }) {
 
   const handleClick = (e) => {
     const formData = Object.fromEntries(new FormData(e.currentTarget));
-    setSortOption({ ...sortOption, categories: formData });
+    setSortOption({ ...sortOption, filters: formData });
   };
   return (
     <form className="product-categories" onChange={handleClick}>
@@ -16,7 +16,7 @@ function Categories({ sortOption, setSortOption }) {
         <option value="">All (Categories)</option>
         {filters.map((el) =>
           el.filterName === "category" ? (
-            <option value={el._id}>{el.name}</option>
+            <option value={el.name}>{el.name}</option>
           ) : (
             ""
           )
@@ -28,7 +28,7 @@ function Categories({ sortOption, setSortOption }) {
         <option value="">All (Cars)</option>
         {filters.map((el) =>
           el.filterName === "car" ? (
-            <option value={el._id}>{el.name}</option>
+            <option value={el.name}>{el.name}</option>
           ) : (
             ""
           )
@@ -40,7 +40,7 @@ function Categories({ sortOption, setSortOption }) {
         <option value="">All (Countries)</option>{" "}
         {filters.map((el) =>
           el.filterName === "country" ? (
-            <option value={el._id}>{el.name}</option>
+            <option value={el.name}>{el.name}</option>
           ) : (
             ""
           )

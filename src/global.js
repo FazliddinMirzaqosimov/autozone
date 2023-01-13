@@ -1,3 +1,3 @@
-const apiUrl = "https://autozone-api.onrender.com";
+const apiUrl = "http://localhost:3001";
 
 export { apiUrl };

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../../global";
@@ -33,6 +33,7 @@ function Card({
       method: "DELETE",
     });
   };
+  useEffect(() => {});
   return (
     <div className="card">
       {isAdmin ? (
@@ -50,11 +51,11 @@ function Card({
       ) : (
         ""
       )}
-      <div className={`card__img ${active}`}>
-        <div className={`img-loading`}>
-          <div className="circle"></div>
-        </div>
-        <Link to={`/product/${_id}`}>
+      <Link to={`/product/${_id}`}>
+        <div className={`card__img ${active}`}>
+          <div className={`img-loading`}>
+            <div className="circle"></div>
+          </div>
           <img
             src={image || "/assets/logos/logop.png"}
             style={{
@@ -65,8 +66,8 @@ function Card({
               setActive("");
             }}
           />{" "}
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="card__def">
         <div className="card__def__rating">
           <Rate rate={rating} />
@@ -76,9 +77,9 @@ function Card({
             {productTitle}
           </Link>
         </Title>
-        <p>{JSON.parse(country).name}</p>
+        <p>{country}</p>
         <p>{createdAt}</p>
-        <p>{JSON.parse(category).name}</p>
+        <p>{category}</p>
         <div className="card__def__sale">
           <Title size={28}>{price} So'm</Title>
           {myProducts.likedProducts.includes(_id) ? (

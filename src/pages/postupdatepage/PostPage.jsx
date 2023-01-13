@@ -66,7 +66,7 @@ const PostPage = ({ handleSubmit }) => {
         <select name="category" required value={product.category}>
           {filters.map((el) =>
             el.filterName === "category" ? (
-              <option value={JSON.stringify(el)}>{el.name}</option>
+              <option value={el.name}>{el.name}</option>
             ) : (
               ""
             )
@@ -74,10 +74,9 @@ const PostPage = ({ handleSubmit }) => {
         </select>
 
         <select name="car" required id="" value={product.car}>
-          <option value='{"_id":"","name":"All"}'>All cars</option>
           {filters.map((el) =>
             el.filterName === "car" ? (
-              <option value={JSON.stringify(el)}>{el.name}</option>
+              <option value={el.name}>{el.name}</option>
             ) : (
               ""
             )
@@ -87,12 +86,11 @@ const PostPage = ({ handleSubmit }) => {
         <select name="country" required id="" value={product.country}>
           {filters.map((el) =>
             el.filterName === "country" ? (
-              <option value={JSON.stringify(el)}>{el.name}</option>
+              <option value={el.name}>{el.name}</option>
             ) : (
               ""
             )
           )}
-          <option value="others">Other country</option>
         </select>
 
         <input
