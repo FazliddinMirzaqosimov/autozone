@@ -8,22 +8,12 @@ function ProductImg({ product }) {
   const myProducts = useSelector((state) => state.user);
   const isDark = React.useContext(ThemeContext);
   const dispatch = useDispatch();
-  const category =
-    product.category.length > 15
-      ? JSON.parse(product.category)
-      : { name: product.category };
-  const country =
-    product.country.length > 15
-      ? JSON.parse(product.country)
-      : { name: product.country };
-  const car =
-    product.car.length > 15 ? JSON.parse(product.car) : { name: product.car };
-
+  console.log(myProducts.likedProducts);
   return (
     <>
       <div className="productImg">
         <p className="productImg__path">
-          Main / Category / <span>{category?.name}</span>
+          Main / Category / <span>{product.category}</span>
         </p>
         <div className="productImg__main">
           <img
@@ -39,20 +29,25 @@ function ProductImg({ product }) {
               <p>Aviable</p>
             </div>
             <div className="productImg__main__def__about">
-              <p style={{ display: category ? "flex" : "none" }}>
+              <p>
                 {"Category"}
                 <div className="stick"></div>
-                {category.name}
+                {product.category}
               </p>
-              <p style={{ display: car ? "flex" : "none" }}>
+              <p>
                 {"Car"}
                 <div className="stick"></div>
-                {car?.name}
+                {product.car}
               </p>
-              <p style={{ display: country ? "flex" : "none" }}>
+              <p>
                 {"Country"}
                 <div className="stick"></div>
-                {country.name}
+                {product.country}
+              </p>
+              <p style={{ display: product.shtrix ? "flex" : "none" }}>
+                {"Shtrix"}
+                <div className="stick"></div>
+                {product.shtrix}
               </p>
             </div>
             <p>{product.description}</p>

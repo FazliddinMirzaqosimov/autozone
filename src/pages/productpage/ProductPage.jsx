@@ -18,17 +18,18 @@ function ProductPage() {
   useEffect(() => {
     if (id === product?._id) return;
     axios.get(`${apiUrl}/api/v1/products/${id}`).then((res) => {
-      dispatch(changeLastProduct(res.data.data.product));
+      const newProduct = res.data.data.product;
+      dispatch(changeLastProduct(newProduct));
+
+      console.log(newProduct);
+      getProducts({ limit: 3, filters: { car: newProduct.car } }, (data) => {
+        console.log(data);
+        setRelatedProducts(data.data.products.filter((el) => el._id !== id));
+      });
     });
   }, [id]);
 
-  useEffect(() => {
-    getProducts({ limit: 3, filters: {} }, (data) => {
-      setRelatedProducts(data.data.products.filter((el) => el._id !== id));
-    });
-  }, [id]);
-
-  return id === product._id ? (
+  return id === product?._id ? (
     <div className="product-page">
       <ProductImg product={product} />
       <h1>Related products. </h1>

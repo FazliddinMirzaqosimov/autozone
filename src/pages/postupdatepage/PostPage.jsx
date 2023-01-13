@@ -99,6 +99,12 @@ const PostPage = ({ handleSubmit }) => {
           placeholder="rating"
           value={product.rating}
         />
+        <input
+          type="number"
+          name="shtrix"
+          placeholder="shtrix"
+          value={product.shtrix}
+        />
 
         <input
           type="number"

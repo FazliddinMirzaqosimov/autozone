@@ -19,6 +19,7 @@ import fetchProducts, {
   fetchProductRequest,
   fetchProductSucces,
 } from "./redux/products/Product.action";
+import { changeLastProduct } from "./redux/user/UserAction";
 import ThemeContext from "./themeContext";
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
       method: "PATCH",
     })
       .then(() => {
+        dispatch(changeLastProduct({}));
         dispatch(fetchProductFail());
         navigate("/product/" + id);
       })
