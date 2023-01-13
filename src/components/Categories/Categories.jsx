@@ -21,7 +21,6 @@ function Categories({ sortOption, setSortOption }) {
             ""
           )
         )}
-        <option value="others">Others</option>
       </select>
 
       <select name="car" required id="">
@@ -33,7 +32,6 @@ function Categories({ sortOption, setSortOption }) {
             ""
           )
         )}
-        <option value="others">Others</option>
       </select>
 
       <select name="country" required id="">
@@ -45,7 +43,6 @@ function Categories({ sortOption, setSortOption }) {
             ""
           )
         )}
-        <option value="others">Others</option>
       </select>
     </form>
   );
