@@ -40,7 +40,6 @@ function fetchProducts() {
         dispatch(fetchProductSucces(response.data.data.products));
       })
       .catch((error) => {
-        console.log(error);
         dispatch(fetchProductFail(error.message));
       });
   };
@@ -54,7 +53,6 @@ export function fetchFilters() {
         dispatch(fetchFiltersSucces(response.data.data.filters));
       })
       .catch((error) => {
-        console.log(error);
         dispatch(fetchProductFail(error.message));
       });
   };

@@ -51,7 +51,6 @@ function App() {
   const updateProduct = (e, id, setErrorMsg) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    console.log(Object.fromEntries(formData.entries()));
     Object.fromEntries(formData.entries()).image.name ||
       formData.delete("image");
 

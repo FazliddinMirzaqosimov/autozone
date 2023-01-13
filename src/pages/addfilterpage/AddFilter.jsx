@@ -38,7 +38,6 @@ function AddFilter({ page }) {
   };
   const handlePatch = (e) => {
     const formData = new FormData(e.currentTarget);
-    console.log(Object.fromEntries(formData.entries()));
     axios({
       url: `${apiUrl}/api/v1/filter/${id}`,
       method: "PATCH",

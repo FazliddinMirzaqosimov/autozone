@@ -33,7 +33,6 @@ function OverViewPage({ isLoading }) {
 
     setProducts(sortedProducts);
   }, [sortOption.name]);
-  console.log(products);
   return (
     <div className="overview">
       <Search sortOption={sortOption} setSortOption={setSortOption} />

@@ -91,7 +91,6 @@ function Card({
             <i
               className="fa-regular fa-heart"
               onClick={() => {
-                console.log(_id);
                 dispatch(addToLikes(_id));
               }}
             ></i>
