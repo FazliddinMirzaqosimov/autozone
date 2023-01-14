@@ -99,6 +99,7 @@ function App() {
             <Route path="/add-filter/:name/" element={<AddCategory />} />
             <Route path="/update-filter/:id/" element={<AddCategory />} />
             <Route path="/delete-filter/:id/" element={<DeletePage />} />
+            <Route path="/reset/:all" element={<DeletePage />} />
             <Route
               path="/post"
               element={<PostPage handleSubmit={postProduct} />}

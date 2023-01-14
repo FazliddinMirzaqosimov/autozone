@@ -5,9 +5,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DashFilterCard from "../../components/filtersCard/DashFilter";
 import { apiUrl } from "../../global";
+import useRestrict from "../../hooks/useAdminProtection";
 import "./dashboard.style.scss";
 
 function Dashboard() {
+  useRestrict()
   const [poductCount, setProductCount] = useState();
 
   useEffect(() => {
@@ -20,7 +22,7 @@ function Dashboard() {
       <div className="crud-btns">
         <Link to="/post">ADD</Link>
         <Link to="/overview">UPDATE</Link>
-        <Link to="/reset">RESET</Link>
+        <Link to="/reset/products">RESET</Link>
       </div>
       <div className="filters">
         <h1>Filters</h1>
