@@ -5,17 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { apiUrl } from "../../global";
 import useRestrict from "../../hooks/useAdminProtection";
-import {
-  fetchProductFail,
-  fetchProductRequest,
-  fetchProductSucces,
-} from "../../redux/products/Product.action";
 import "./post.style.scss";
 
 const PostPage = ({ handleSubmit }) => {
   useRestrict();
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState({ rating: 1 });
   const [errorMsg, setErrorMsg] = useState("");
   const filters = useSelector((state) => state.product.filters);
 

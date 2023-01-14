@@ -11,8 +11,8 @@ function Footer({ isDark }) {
           ALL PRODUCTS
         </NavLink>
         <div className="stick"></div>
-        <NavLink to="about" className="link">
-          TELEGRAM BOT
+        <NavLink to="/about" className="link">
+          ABOUT
         </NavLink>
         <div className="stick"></div>
         <NavLink to="" className="link logo">
@@ -42,7 +42,7 @@ function Footer({ isDark }) {
             <i className="fa-brands fa-instagram"></i>
           </a>
           <a href="#">
-            <i className="fa-brands fa-facebook"></i>
+            <i className="fa-brands fa-telegram"></i>
           </a>
         </div>
         <p>All rights reserved</p>

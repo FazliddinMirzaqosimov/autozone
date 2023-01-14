@@ -7,6 +7,9 @@ import { apiUrl } from "./global";
 import Footer from "./layouts/footer/Footer";
 import Navigator from "./layouts/navigator/Navigator";
 import AddCategory from "./pages/addfilterpage/AddFilter";
+import Dashboard from "./pages/dashboard/Dashboard";
+import DeletePage from "./pages/deletePage/DeletePage";
+import ErrorPage from "./pages/erorpage/ErrorPage";
 import HomePage from "./pages/homepage/HomePage";
 import LikePage from "./pages/likepage/LikePage";
 import LoginPage from "./pages/loginpage/LoginPage";
@@ -91,9 +94,11 @@ function App() {
         <div className="App__pages">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/add-filter/:name/" element={<AddCategory />} />
             <Route path="/update-filter/:id/" element={<AddCategory />} />
+            <Route path="/delete-filter/:id/" element={<DeletePage />} />
             <Route
               path="/post"
               element={<PostPage handleSubmit={postProduct} />}
@@ -108,6 +113,7 @@ function App() {
               element={<OverViewPage isLoading={store.isLoading} />}
             />
             <Route path="product/:id" element={<ProductPage />} />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </div>
         <Footer isDark={isDark} />

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import deleteProduct from "../../hooks/deleteProduct";
 import { addToLikes, removeToLikes } from "../../redux/user/UserAction";
 import ThemeContext from "../../themeContext";
 import "./productimage.style.scss";
@@ -8,7 +10,9 @@ function ProductImg({ product }) {
   const myProducts = useSelector((state) => state.user);
   const isDark = React.useContext(ThemeContext);
   const dispatch = useDispatch();
-  console.log(myProducts.likedProducts);
+  const navigate = useNavigate();
+  // console.log(myProducts.isAdmin);
+  // console.log(myProducts.likedProducts);
   return (
     <>
       <div className="productImg">
@@ -16,6 +20,22 @@ function ProductImg({ product }) {
           Main / Category / <span>{product.category}</span>
         </p>
         <div className="productImg__main">
+          {myProducts.isAdmin ? (
+            <div className="change-product">
+              <Link to={`/edit/${product._id}`}>
+                <i className="fa-solid fa-pen-to-square"></i>
+              </Link>
+              <p
+                onClick={() => {
+                  deleteProduct(product._id, () => navigate("/overview"));
+                }}
+              >
+                <i className="fa-solid fa-eraser"></i>
+              </p>
+            </div>
+          ) : (
+            ""
+          )}
           <img
             src={product.image ? product.image : "/assets/logos/logop.png"}
             style={{
@@ -53,8 +73,8 @@ function ProductImg({ product }) {
             <p>{product.description}</p>
             <div className="productImg__main__def__sale">
               <div>
-                <p>${(product.price * 1.1).toFixed(2)}</p>
-                <h2>${product.price}</h2>
+                <p>{(product.price * 1.1).toFixed(2)} UZS</p>
+                <h2>{product.price} UZS</h2>
               </div>
               <div>
                 {myProducts.likedProducts.includes(product._id) ? (

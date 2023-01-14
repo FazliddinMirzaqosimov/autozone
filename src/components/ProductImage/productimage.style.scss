@@ -17,13 +17,46 @@
     align-items: center;
     justify-content: space-between;
     gap: 30px;
-    & > {
-      img {
-        width: 50%;
-        max-height: 400px;
-        object-fit: contain;
-        min-width: 200px;
+    position: relative;
+    .change-product {
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      a,
+      p {
+        transition: 200ms;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: var(--red-color);
+        border-radius: 3px;
+        border-bottom: 2px solid rgb(130, 0, 0);
+        color: aliceblue;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          translate: 0 -2px;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.203);
+        }
       }
+      a {
+        border-bottom: 2px solid rgb(0, 78, 0);
+        background-color: green;
+      }
+    }
+    & > img {
+      width: 50%;
+      max-height: 400px;
+      object-fit: contain;
+      min-width: 200px;
     }
     &__def {
       width: 50%;

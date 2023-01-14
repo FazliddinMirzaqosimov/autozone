@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
 // import LoginPopup from "../../components/Login/LoginPopup";
@@ -6,8 +7,7 @@ import "./navigator.style.scss";
 
 function Navigator({ setIsDark, isDark }) {
   const [active, setActive] = useState(false);
-  // const [isLogin, setIsLogin] = useState(false);
-
+  const isAdmin = useSelector((state) => state.user.isAdmin);
   const changeMode = () => {
     setIsDark(!isDark);
   };
@@ -38,6 +38,13 @@ function Navigator({ setIsDark, isDark }) {
             <NavLink to="/about" className="link">
               ABOUT
             </NavLink>
+            {isAdmin ? (
+              <NavLink to="/dashboard" className="link">
+                DASHBOARD
+              </NavLink>
+            ) : (
+              ""
+            )}
             <p className="link" onClick={changeMode}>
               Night/Light
             </p>
@@ -49,7 +56,7 @@ function Navigator({ setIsDark, isDark }) {
                 <i className="fa-brands fa-instagram"></i>
               </a>
               <a href="#">
-                <i className="fa-brands fa-facebook"></i>
+                <i className="fa-brands fa-telegram"></i>
               </a>
               <Link to="/likes">
                 <i className="fa-regular fa-heart"></i>
@@ -71,7 +78,14 @@ function Navigator({ setIsDark, isDark }) {
           </NavLink>
           <NavLink to="/about" className="link">
             ABOUT
-          </NavLink>
+          </NavLink>{" "}
+          {isAdmin ? (
+            <NavLink to="/dashboard" className="link">
+              DASHBOARD
+            </NavLink>
+          ) : (
+            ""
+          )}
           <p className="link" onClick={changeMode}>
             Night/Light
           </p>

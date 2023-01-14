@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { apiUrl } from "../../global";
+import deleteProduct from "../../hooks/deleteProduct";
 import fetchProducts from "../../redux/products/Product.action";
 import { addToLikes, removeToLikes } from "../../redux/user/UserAction";
 import ThemeContext from "../../themeContext";
@@ -16,9 +17,10 @@ function Card({
   name,
   length,
   _id,
-  createdAt,
+  car,
   country,
   category,
+  setFetchingData,
 }) {
   const [active, setActive] = useState("active");
   const productTitle =
@@ -28,24 +30,20 @@ function Card({
   const dispatch = useDispatch();
   const { isAdmin } = useSelector((state) => state.user);
 
-  const deleteProduct = async (id) => {
-    return await fetch(apiUrl + "/api/v1/products/" + id, {
-      method: "DELETE",
-    });
-  };
   useEffect(() => {});
   return (
     <div className="card">
       {isAdmin ? (
         <div className="change-product">
-          <Link to={`/edit/${_id}`}>edit</Link>
+          <Link to={`/edit/${_id}`}>
+            <i class="fa-solid fa-pen-to-square"></i>
+          </Link>
           <p
             onClick={() => {
-              deleteProduct(_id);
-              dispatch(fetchProducts());
+              deleteProduct(_id, setFetchingData);
             }}
           >
-            delete
+            <i className="fa-solid fa-eraser"></i>
           </p>
         </div>
       ) : (
@@ -77,9 +75,9 @@ function Card({
             {productTitle}
           </Link>
         </Title>
-        <p>{country}</p>
-        <p>{createdAt}</p>
-        <p>{category}</p>
+        <p>
+          {country}--{car}--{category}
+        </p>
         <div className="card__def__sale">
           <Title size={28}>{price} So'm</Title>
           {myProducts.likedProducts.includes(_id) ? (

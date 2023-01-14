@@ -11,7 +11,7 @@
     font-weight: 900;
     font-size: 35px;
     line-height: 52px;
-    text-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 5px 5px rgba(0, 0, 0, 0.249);
     span {
       color: var(--red-color);
     }
@@ -186,14 +186,14 @@
 @media (max-width: 600px) {
   .showcase {
     h1 {
-      font-size: 33px;
+      font-size: 30px;
     }
     p:nth-child(2) {
       margin-bottom: 100px;
     }
     .imgs {
       width: 100%;
-      margin-top: 80px;
+      margin-top: 100px;
     }
     .romb {
       display: none;
