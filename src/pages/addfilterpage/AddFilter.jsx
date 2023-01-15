@@ -44,7 +44,7 @@ function AddFilter({ page }) {
       data: Object.fromEntries(formData.entries()),
     })
       .then((res) => {
-        navigate("/overview");
+        navigate("/dashboard");
         dispatch(fetchFilters());
       })
       .catch((err) => {

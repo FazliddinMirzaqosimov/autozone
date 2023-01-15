@@ -26,23 +26,19 @@ function OverViewPage() {
   useEffect(setFetchingData, [sortOption.sort, sortOption.filters]);
 
   useEffect(() => {
-    if (!sortOption.name) return;
     const sortedProducts = store.filter((el) => {
       return el.name.toLowerCase().includes(sortOption.name.toLowerCase());
     });
 
     setProducts(sortedProducts);
-  });
+  }, [sortOption.name]);
   return (
     <div className="overview">
       <Search sortOption={sortOption} setSortOption={setSortOption} />
       <div className="categories">
         <Categories sortOption={sortOption} setSortOption={setSortOption} />
       </div>
-      <p className="overview__categoryTitle">
-        {/* {sortOption.category.toLocaleUpperCase() || "ALL"}:{" "} */}
-        {products.length}
-      </p>
+      <p className="overview__categoryTitle">{products.length}</p>
       <Cards store={products} setFetchingData={setFetchingData} />
     </div>
   );

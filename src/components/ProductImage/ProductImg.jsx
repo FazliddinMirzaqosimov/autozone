@@ -1,6 +1,9 @@
+import axios from "axios";
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { apiUrl } from "../../global";
 import deleteProduct from "../../hooks/deleteProduct";
 import { addToLikes, removeToLikes } from "../../redux/user/UserAction";
 import ThemeContext from "../../themeContext";
@@ -11,8 +14,22 @@ function ProductImg({ product }) {
   const isDark = React.useContext(ThemeContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log(myProducts.isAdmin);
-  // console.log(myProducts.likedProducts);
+  const [filter, setFilter] = useState({});
+
+  useEffect(() => {
+    Promise.all([
+      axios.get(`${apiUrl}/api/v1/filter/${product.category}`),
+      axios.get(`${apiUrl}/api/v1/filter/${product.car}`),
+      axios.get(`${apiUrl}/api/v1/filter/${product.country}`),
+    ]).then((res) => {
+      let filters = {};
+      res.forEach((el) => {
+        filters[el.data.data.filter.filterName] = el.data.data.filter.name;
+      });
+      setFilter(filters);
+    });
+  }, [product]);
+
   return (
     <>
       <div className="productImg">
@@ -52,17 +69,17 @@ function ProductImg({ product }) {
               <p>
                 {"Category"}
                 <div className="stick"></div>
-                {product.category}
+                {filter.category}
               </p>
               <p>
                 {"Car"}
                 <div className="stick"></div>
-                {product.car}
+                {filter.car}
               </p>
               <p>
                 {"Country"}
                 <div className="stick"></div>
-                {product.country}
+                {filter.country}
               </p>
               <p style={{ display: product.shtrix ? "flex" : "none" }}>
                 {"Shtrix"}

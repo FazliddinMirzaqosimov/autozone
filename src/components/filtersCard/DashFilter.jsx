@@ -8,8 +8,12 @@ function Filter({ filter }) {
     <p className="filter-line">
       {filter.name}
       <span>
-        <Link to={"/update-filter/" + filter._id}>e</Link>
-        <Link to={"/delete-filter/" + filter._id}>d</Link>
+        <Link to={"/delete-filter/" + filter._id}>
+          <i className="fa-solid fa-eraser"></i>
+        </Link>
+        <Link to={"/update-filter/" + filter._id}>
+          <i className="fa-solid fa-pen-to-square"></i>
+        </Link>
       </span>
     </p>
   );
@@ -17,7 +21,6 @@ function Filter({ filter }) {
 
 function DashFilterCard({ filterName, filterType }) {
   const filters = useSelector((state) => state.product.filters);
-  console.log(filters);
   return (
     <div className="dash-filter">
       <Link to={"/add-filter/" + filterType} className="dash-filter__title">

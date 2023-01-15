@@ -36,7 +36,7 @@ function Card({
       {isAdmin ? (
         <div className="change-product">
           <Link to={`/edit/${_id}`}>
-            <i class="fa-solid fa-pen-to-square"></i>
+            <i className="fa-solid fa-pen-to-square"></i>
           </Link>
           <p
             onClick={() => {
@@ -67,32 +67,36 @@ function Card({
         </div>
       </Link>
       <div className="card__def">
-        <div className="card__def__rating">
-          <Rate rate={rating} />
+        <div>
+          <div className="card__def__rating">
+            <Rate rate={rating} />
+          </div>
+          <Title size={16}>
+            <Link className="card__def__title" to={`/product/${_id}`}>
+              {productTitle}
+            </Link>
+          </Title>
         </div>
-        <Title size={16}>
-          <Link className="card__def__title" to={`/product/${_id}`}>
-            {productTitle}
-          </Link>
-        </Title>
-        <p>
-          {country}--{car}--{category}
-        </p>
-        <div className="card__def__sale">
-          <Title size={28}>{price} So'm</Title>
-          {myProducts.likedProducts.includes(_id) ? (
-            <i
-              className="fa-solid fa-heart"
-              onClick={() => dispatch(removeToLikes(_id))}
-            ></i>
-          ) : (
-            <i
-              className="fa-regular fa-heart"
-              onClick={() => {
-                dispatch(addToLikes(_id));
-              }}
-            ></i>
-          )}
+        <div>
+          {/* <p>
+            {country}--{car}--{category}
+          </p> */}
+          <div className="card__def__sale">
+            <Title size={28}>{price} So'm</Title>
+            {myProducts.likedProducts.includes(_id) ? (
+              <i
+                className="fa-solid fa-heart"
+                onClick={() => dispatch(removeToLikes(_id))}
+              ></i>
+            ) : (
+              <i
+                className="fa-regular fa-heart"
+                onClick={() => {
+                  dispatch(addToLikes(_id));
+                }}
+              ></i>
+            )}
+          </div>
         </div>
       </div>
     </div>

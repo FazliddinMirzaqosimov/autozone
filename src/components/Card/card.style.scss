@@ -5,6 +5,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
@@ -51,7 +52,6 @@
     background-color: var(--primary-background-color);
     height: 300px;
     padding: 5%;
-
     img {
       height: 100%;
       width: 100%;
@@ -77,14 +77,20 @@
   &__def {
     padding: 7%;
     margin-top: auto;
-    & > p {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    & > div:last-child {
+      margin-top: auto;
+    }
+    p {
       font-size: 12px;
       color: rgb(130, 130, 130);
       margin: 5px 0;
       font-weight: 300;
     }
     &__title {
-      margin: 10px 0 0;
+      margin: 10px 0;
     }
     &__title:hover {
       color: var(--red-color);
