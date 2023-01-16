@@ -1,3 +1,3 @@
-const apiUrl = "https://autozone-api.onrender.com";
+const apiUrl = "https://autozone-api-epxq.onrender.com";
 
 export { apiUrl };
