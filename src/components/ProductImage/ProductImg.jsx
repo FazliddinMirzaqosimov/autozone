@@ -34,7 +34,7 @@ function ProductImg({ product }) {
     <>
       <div className="productImg">
         <p className="productImg__path">
-          Main / Category / <span>{product.category}</span>
+          Main / Category / <span>{filter.category}</span>
         </p>
         <div className="productImg__main">
           {myProducts.isAdmin ? (
